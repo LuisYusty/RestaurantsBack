@@ -15,15 +15,15 @@ import java.util.List;
         unmappedTargetPolicy = ReportingPolicy.IGNORE,
         unmappedSourcePolicy = ReportingPolicy.IGNORE)
 public interface IUserResponseMapper {
-/*
+
     @Mappings({
             @Mapping(target="name", source="name"),
             @Mapping(target="lastName", source="lastName"),
             @Mapping(target="idDocument", source="idDocument"),
             @Mapping(target="email", source="email"),
             @Mapping(target="password", source="password")
-    })*/
-    UserResponse toUser(UserModel userModel);
+    })
+    UserResponse toResponse(UserModel userModel);
 
     List<UserResponse> toResponseList(List<UserModel> objectModelList);
 }

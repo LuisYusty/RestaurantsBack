@@ -7,21 +7,20 @@ import com.BackRestaurants.Users.application.mapper.IUserRequestMapper;
 import com.BackRestaurants.Users.application.mapper.IUserResponseMapper;
 import com.BackRestaurants.Users.domain.api.IUserServicePort;
 import com.BackRestaurants.Users.domain.model.UserModel;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
+@RequiredArgsConstructor // crea un constructor
+@Transactional
 public class UserHandlerImpl implements IUserHandler {
 
     private final IUserServicePort iUserServicePort;
     private final IUserRequestMapper iUserRequestMapper;
-
     private final IUserResponseMapper iUserResponseMapper;
-
-    public UserHandlerImpl(IUserServicePort iUserServicePort, IUserRequestMapper iUserRequestMapper, IUserResponseMapper iUserResponseMapper) {
-        this.iUserServicePort = iUserServicePort;
-        this.iUserRequestMapper = iUserRequestMapper;
-        this.iUserResponseMapper = iUserResponseMapper;
-    }
 
     @Override
     public void saveUser(UserRequest userRequest) {
@@ -41,11 +40,15 @@ public class UserHandlerImpl implements IUserHandler {
     @Override
     public UserResponse getUser(Long id) {
        UserModel userModel = iUserServicePort.getUser(id);
-        return iUserResponseMapper.toUser(userModel);
+       return iUserResponseMapper.toResponse(userModel);
+
     }
 
     @Override
     public void deleteUser(Long id) {
+        iUserServicePort.deleteUser(id);
 
     }
+
+
 }

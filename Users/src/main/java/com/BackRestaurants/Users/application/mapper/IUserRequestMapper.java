@@ -13,13 +13,13 @@ import org.mapstruct.ReportingPolicy;
         unmappedSourcePolicy = ReportingPolicy.IGNORE)
 public interface IUserRequestMapper {
 
-    /*@Mappings({
+    @Mappings({
             @Mapping(target="name", source="name"),
             @Mapping(target="lastName", source="lastName"),
             @Mapping(target="idDocument", source="idDocument"),
             @Mapping(target="email", source="email"),
             @Mapping(target="password", source="password")
-    })*/
+    })
     UserModel toUser(UserRequest userRequest); // UserModel representa un usuario y UserRequest contiene los campos de
                                                // nombre,apellido etc, entonces toUser crea un nuevo usuario (UserModel)
                                                // va "llenando de datos" el UserModel

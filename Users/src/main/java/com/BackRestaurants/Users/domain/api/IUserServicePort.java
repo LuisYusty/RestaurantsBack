@@ -9,9 +9,12 @@ public interface IUserServicePort {
 
     void saveUser(UserModel userModel);
 
+
     List<UserModel>getAllUsers();
 
     UserModel getUser(Long id);
 
     void deleteUser(Long id);
+
+
 }

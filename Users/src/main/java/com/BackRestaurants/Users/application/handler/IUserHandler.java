@@ -12,9 +12,12 @@ public interface IUserHandler {
 
     void saveUser(UserRequest userRequest);
 
+
     List<UserResponse> getAllUsers();
 
     UserResponse getUser(Long id);
 
     void deleteUser(Long id);
+
+
 }
