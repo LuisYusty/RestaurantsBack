@@ -34,7 +34,7 @@ public class UserHandlerImpl implements IUserHandler {
 
     @Override
     public List<UserResponse> getAllUsers() {
-        return null;
+        return iUserResponseMapper.toResponseList(iUserServicePort.getAllUsers());
     }
 
     @Override
