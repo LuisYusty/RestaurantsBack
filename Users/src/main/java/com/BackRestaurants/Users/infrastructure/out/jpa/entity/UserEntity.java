@@ -1,6 +1,5 @@
 package com.BackRestaurants.Users.infrastructure.out.jpa.entity;
 
-import com.BackRestaurants.Users.domain.model.RoleModel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,8 +34,5 @@ public class UserEntity {
     @Column (name = "password",nullable = false)
     private String password;
 
-    @ManyToOne  //muchas enfermedades puede tener 1 estudiante
-    @JoinColumn(name = "id_role", nullable = false)
-    private RoleEntity role;
-
+    
 }

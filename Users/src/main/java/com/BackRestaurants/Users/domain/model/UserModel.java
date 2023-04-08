@@ -22,5 +22,5 @@ public class UserModel {
 
     private String password;
 
-    private  RoleModel role;
+
 }
