@@ -9,6 +9,7 @@ import com.BackRestaurants.Users.domain.api.IUserServicePort;
 import com.BackRestaurants.Users.domain.model.UserModel;
 import lombok.RequiredArgsConstructor;
 import org.apache.catalina.User;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,13 +20,17 @@ import java.util.List;
 @Transactional
 public class UserHandlerImpl implements IUserHandler {
 
+
     private final IUserServicePort iUserServicePort;
     private final IUserRequestMapper iUserRequestMapper;
     private final IUserResponseMapper iUserResponseMapper;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public void saveUser(UserRequest userRequest) {
         UserModel userModel = iUserRequestMapper.toUser(userRequest);
+        String contraseñaEncriptada = passwordEncoder.encode(userModel.getPassword());
+        userModel.setPassword(contraseñaEncriptada);
         iUserServicePort.saveUser(userModel);
 
         //El método primero usa un mapeador de objetos llamado UserRequestMapper para convertir el UserRequest (objeto)
