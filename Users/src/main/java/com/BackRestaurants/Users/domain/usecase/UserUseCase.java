@@ -8,6 +8,8 @@ import java.util.List;
 
 public class UserUseCase implements IUserServicePort {
 
+    // se implementa el ServicePort
+    // se traen los metodos del PersistencePort
     private final IUserPersistencePort iUserPersistencePort;
 
     public UserUseCase(IUserPersistencePort iUserPersistencePort) {

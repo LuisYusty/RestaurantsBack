@@ -26,4 +26,7 @@ public interface IUserResponseMapper {
     UserResponse toResponse(UserModel userModel);
 
     List<UserResponse> toResponseList(List<UserModel> objectModelList);
+
+   // indica que se espera que el método tome una lista de objetos UserModel como entrada y devuelva
+    // una lista de objetos UserResponse como resultado
 }

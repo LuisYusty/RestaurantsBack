@@ -15,6 +15,8 @@ public class UserJpaAdapter implements IUserPersistencePort {
     private final IUserRepository iUserRepository;
 
 
+    // uso los mapper y los metodos que he heredado de JpaRepository
+
     @Override
     public UserModel saveUser(UserModel userModel) {
         UserEntity userEntity = iUserRepository.save(iUserEntityMapper.toEntity(userModel));
@@ -35,6 +37,7 @@ public class UserJpaAdapter implements IUserPersistencePort {
 
     @Override
     public void deleteUser(Long id) {
+       iUserRepository.deleteById(id);
 
     }
 

@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface IUserHandler {
 
-
+   // mismos metodos de la api pero con argumentos de esta capa
 
     void saveUser(UserRequest userRequest);
 

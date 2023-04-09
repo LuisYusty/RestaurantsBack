@@ -8,6 +8,7 @@ import com.BackRestaurants.Users.application.mapper.IUserResponseMapper;
 import com.BackRestaurants.Users.domain.api.IUserServicePort;
 import com.BackRestaurants.Users.domain.model.UserModel;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,6 +36,11 @@ public class UserHandlerImpl implements IUserHandler {
     @Override
     public List<UserResponse> getAllUsers() {
         return iUserResponseMapper.toResponseList(iUserServicePort.getAllUsers());
+        //La implementación del método getAllUsers() simplemente llama al método getAllUsers()
+        // del puerto iUserServicePort para obtener una lista de objetos UserModel que representan
+        // todos los usuarios en la aplicación, y luego utiliza el objeto iUserResponseMapper para
+        // convertir cada objeto UserModel en un objeto UserResponse. Finalmente, devuelve una lista
+        // de objetos UserResponse que contienen la información de todos los usuarios en la aplicación.
     }
 
     @Override
@@ -46,8 +52,8 @@ public class UserHandlerImpl implements IUserHandler {
 
     @Override
     public void deleteUser(Long id) {
+        UserModel userModel = iUserServicePort.getUser(id); // traemos el pokemon para verificar que exista
         iUserServicePort.deleteUser(id);
-
     }
 
 
